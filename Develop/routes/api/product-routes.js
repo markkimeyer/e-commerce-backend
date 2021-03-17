@@ -34,7 +34,7 @@ if (!productData) {
   return;
 }
 
-res.status(200).json(productdData);
+res.status(200).json(productData);
 } catch (err) {
   res.status(500).json(err);
 }

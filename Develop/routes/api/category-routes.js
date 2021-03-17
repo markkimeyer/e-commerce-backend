@@ -11,10 +11,11 @@ router.get('/', async (req, res) => {
   // be sure to include its associated Products
   try {
     const categoryData = await Category.findAll({
-      include: [{ model: product }],
+      include: [{ model: Product }],
     });
     res.status(200).json(categoryData);
   } catch (err) {
+    console.log("THIS IS BROKEN", err);
     res.status(500).json(err);
   }
 });
@@ -25,7 +26,7 @@ router.get('/:id', async (req, res) => {
   // be sure to include its associated Products
   try {
     const categoryData = await Category.findByPk(req.params.id, {
-      include: [{ model: product }],
+      include: [{ model: Product }],
     });
 
     if (!categoryData) {
@@ -33,7 +34,7 @@ router.get('/:id', async (req, res) => {
       return;
     }
 
-    res.status(200).json(CategorydData);
+    res.status(200).json(categorydData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -41,7 +42,9 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
+    //the req.body is coming from the postman body
     const categoryData = await Category.create(req.body);
+    //json of what sequelize/postman returns
     res.status(200).json(categoryData);
   } catch (err) {
     res.status(400).json(err);
