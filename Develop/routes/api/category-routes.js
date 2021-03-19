@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
     });
     res.status(200).json(categoryData);
   } catch (err) {
-    console.log("THIS IS BROKEN", err);
+    console.log("Get category is BROKEN", err);
     res.status(500).json(err);
   }
 });
@@ -34,7 +34,7 @@ router.get('/:id', async (req, res) => {
       return;
     }
 
-    res.status(200).json(categorydData);
+    res.status(200).json(categoryData);
   } catch (err) {
     console.log("category by id is broken", err);
     res.status(500).json(err);
