@@ -36,9 +36,12 @@ router.get('/:id', async (req, res) => {
 
     res.status(200).json(categorydData);
   } catch (err) {
+    console.log("category by id is broken", err);
     res.status(500).json(err);
+  
   }
 });
+
 
 router.post('/', async (req, res) => {
   try {
